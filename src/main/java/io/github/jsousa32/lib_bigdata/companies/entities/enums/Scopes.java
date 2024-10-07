@@ -2,7 +2,9 @@ package io.github.jsousa32.lib_bigdata.companies.entities.enums;
 
 public enum Scopes {
 
-    REGISTRATION("registration");
+    REGISTRATION("registration"),
+
+    BASIC_DATA("basic");
 
 
     private final String label;
