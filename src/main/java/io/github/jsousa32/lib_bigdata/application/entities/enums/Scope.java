@@ -10,7 +10,15 @@ public enum Scope {
 
     EMPLOYEES_KYC("employees_kyc"),
 
-    KYC("kyc");
+    KYC("kyc"),
+
+    LAWSUITS_DISTRIBUTION_DATA("lawsuits_distribution_data"),
+
+    OWNERS_LAWSUITS("owners_lawsuits"),
+
+    OWNERS_LAWSUITS_DISTRIBUTION_DATA("owners_lawsuits_distribution_data"),
+
+    PROCESSES("processes");
 
     private final String dataset;
 
