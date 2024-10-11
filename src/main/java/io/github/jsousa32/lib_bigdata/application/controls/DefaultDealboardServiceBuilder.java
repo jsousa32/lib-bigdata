@@ -29,7 +29,19 @@ public class DefaultDealboardServiceBuilder implements DealboardService.Builder 
 
     @Override
     public DealbordFactory build() {
+        validatedFields();
+
         return new DefaultDealboardFactory(this.generateUri(), this.generateHeaders());
+    }
+
+    private void validatedFields() {
+        if (this.accessToken == null) {
+            throw new IllegalArgumentException("Missing required parameter: accessToken");
+        }
+
+        if (this.document == null) {
+            throw new IllegalArgumentException("Missing required parameter: document");
+        }
     }
 
     private UriComponentsBuilder generateUri() {
