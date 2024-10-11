@@ -2,8 +2,8 @@ package io.github.jsousa32.lib_bigdata.application.controls;
 
 import io.github.jsousa32.lib_bigdata.companies.controls.CompanyService;
 import io.github.jsousa32.lib_bigdata.companies.controls.DefaultCompanyService;
-import io.github.jsousa32.lib_bigdata.person.controls.DefaultPersonService;
-import io.github.jsousa32.lib_bigdata.person.controls.PersonService;
+import io.github.jsousa32.lib_bigdata.people.controls.DefaultPersonService;
+import io.github.jsousa32.lib_bigdata.people.controls.PersonService;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.util.UriComponentsBuilder;
