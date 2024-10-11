@@ -3,15 +3,9 @@ package io.github.jsousa32.lib_bigdata.application.controls;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.util.UriComponentsBuilder;
 
-/**
- * The Class DefaultDealboardServiceBuilder
- *
- * @author João Lucas Silva de Sousa
- * @sincer 10/10/2024
- */
 public class DefaultDealboardServiceBuilder implements DealboardService.Builder {
 
-    private static final String BASE_URL = "http://192.168.0.125:8080/v1/api/bigdata/company/";
+    private static final String BASE_URL = "http://192.168.0.125:8080/v1/api/bigdata/";
 
     private static final String ACCESS_TOKEN = "AccessToken";
 

@@ -8,12 +8,6 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.web.util.UriComponentsBuilder;
 
-/**
- * The Class DefaultDealboardScopeBuilder
- *
- * @author João Lucas Silva de Sousa
- * @sincer 10/10/2024
- */
 public class DefaultDealboardFactory implements DealbordFactory {
 
     private final UriComponentsBuilder uri;
