@@ -6,7 +6,9 @@ public enum Scope {
 
     BASIC_DATA("basic_data"),
 
-    ECONOMIC_GROUP_KYC("economic_group_kyc");
+    ECONOMIC_GROUP_KYC("economic_group_kyc"),
+
+    EMPLOYEES_KYC("employees_kyc");
 
     private final String dataset;
 
