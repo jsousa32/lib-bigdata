@@ -1,6 +1,6 @@
 package io.github.jsousa32.lib_bigdata.people.controls;
 
-import io.github.jsousa32.lib_bigdata.companies.entities.enums.Scopes;
+import io.github.jsousa32.lib_bigdata.application.entities.enums.Scope;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.client.RestTemplate;
@@ -25,9 +25,9 @@ public class DefaultPersonService implements PersonService {
         this.httpEntity = httpEntity;
     }
 
-    private <T> T execute(String document, Scopes scopes, Class<T> responseType) {
+    private <T> T execute(String document, Scope scope, Class<T> responseType) {
         this.uri.queryParam("document", document);
-        this.uri.path(scopes.getLabel());
+        this.uri.path(scope.getDataset());
 
         return restTemplate.exchange(this.uri.toUriString(), HttpMethod.GET, this.httpEntity, responseType).getBody();
     }

@@ -1,6 +1,6 @@
 package io.github.jsousa32.lib_bigdata.companies.controls;
 
-import io.github.jsousa32.lib_bigdata.companies.entities.enums.Scopes;
+import io.github.jsousa32.lib_bigdata.application.entities.enums.Scope;
 import io.github.jsousa32.lib_bigdata.companies.entities.registration_data.BasicData;
 import io.github.jsousa32.lib_bigdata.companies.entities.registration_data.RegistrationData;
 import org.springframework.http.HttpEntity;
@@ -23,17 +23,17 @@ public class DefaultCompanyService implements CompanyService {
 
     @Override
     public RegistrationData registrationData(String document) {
-        return execute(document, Scopes.REGISTRATION, RegistrationData.class);
+        return execute(document, Scope.REGISTRATION, RegistrationData.class);
     }
 
     @Override
     public BasicData basicData(String document) {
-        return execute(document, Scopes.BASIC_DATA, BasicData.class);
+        return execute(document, Scope.BASIC_DATA, BasicData.class);
     }
 
-    private <T> T execute(String document, Scopes scopes, Class<T> responseType) {
+    private <T> T execute(String document, Scope scope, Class<T> responseType) {
         this.uri.queryParam("document", document);
-        this.uri.path(scopes.getLabel());
+        this.uri.path(scope.getDataset());
 
         return restTemplate.exchange(this.uri.toUriString(), HttpMethod.GET, this.httpEntity, responseType).getBody();
     }
