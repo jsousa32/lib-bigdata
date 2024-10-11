@@ -18,7 +18,25 @@ public enum Scope {
 
     OWNERS_LAWSUITS_DISTRIBUTION_DATA("owners_lawsuits_distribution_data"),
 
-    PROCESSES("processes");
+    PROCESSES("processes"),
+
+    COLLECTIONS("collections"),
+
+    FAMILY_LAWSUITS_DISTRIBUTION_DATA("family_lawsuits_distribution_data"),
+
+    FINANCIAL_RISK("financial_risk"),
+
+    FIRST_LEVEL_RELATIVES_LAWSUITS_DATA("first_level_relatives_lawsuit_data"),
+
+    GOVERNMENT_DEBTORS("government_debtors"),
+
+    INDEBTEDNESS_QUESTION("indebtedness_question"),
+
+    OCCUPATION_DATA("occupation_data"),
+
+    UNIVERSITY_STUNDENT_DATA("university_student_data"),
+
+    VEHICLES("vehicles");
 
     private final String dataset;
 
