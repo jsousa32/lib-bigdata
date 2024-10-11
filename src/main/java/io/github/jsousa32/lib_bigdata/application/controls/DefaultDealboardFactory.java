@@ -1,5 +1,7 @@
 package io.github.jsousa32.lib_bigdata.application.controls;
 
+import io.github.jsousa32.lib_bigdata.addresses.controls.AddressService;
+import io.github.jsousa32.lib_bigdata.addresses.controls.DefaultAddressService;
 import io.github.jsousa32.lib_bigdata.companies.controls.CompanyService;
 import io.github.jsousa32.lib_bigdata.companies.controls.DefaultCompanyService;
 import io.github.jsousa32.lib_bigdata.people.controls.DefaultPersonService;
@@ -27,5 +29,10 @@ public class DefaultDealboardFactory implements DealbordFactory {
     @Override
     public PersonService person() {
         return new DefaultPersonService(this.uri, this.httpEntity);
+    }
+
+    @Override
+    public AddressService address() {
+        return new DefaultAddressService(this.uri, this.httpEntity);
     }
 }
