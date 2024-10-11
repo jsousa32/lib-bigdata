@@ -1,6 +1,7 @@
 package io.github.jsousa32.lib_bigdata.companies.controls;
 
 import io.github.jsousa32.lib_bigdata.application.entities.enums.Scope;
+import io.github.jsousa32.lib_bigdata.companies.entities.economic_group_kyc.EconomicGroupKycData;
 import io.github.jsousa32.lib_bigdata.companies.entities.registration_data.BasicData;
 import io.github.jsousa32.lib_bigdata.companies.entities.registration_data.RegistrationData;
 import org.springframework.http.HttpEntity;
@@ -29,6 +30,11 @@ public class DefaultCompanyService implements CompanyService {
     @Override
     public BasicData basicData(String document) {
         return execute(document, Scope.BASIC_DATA, BasicData.class);
+    }
+
+    @Override
+    public EconomicGroupKycData economicGroupKycData(String document) {
+        return execute(document, Scope.ECONOMIC_GROUP_KYC, EconomicGroupKycData.class);
     }
 
     private <T> T execute(String document, Scope scope, Class<T> responseType) {

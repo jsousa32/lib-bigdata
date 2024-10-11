@@ -4,8 +4,9 @@ public enum Scope {
 
     REGISTRATION("registration_data"),
 
-    BASIC_DATA("basic_data");
+    BASIC_DATA("basic_data"),
 
+    ECONOMIC_GROUP_KYC("economic_group_kyc");
 
     private final String dataset;
 
