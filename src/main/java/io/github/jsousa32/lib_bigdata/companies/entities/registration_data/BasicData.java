@@ -1,6 +1,8 @@
 package io.github.jsousa32.lib_bigdata.companies.entities.registration_data;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class BasicData {
 
@@ -53,14 +55,14 @@ public class BasicData {
     }
 
     public List<Activities> getActivities() {
-        return activities;
+        return Objects.isNull(activities) ? new ArrayList<>() : activities;
     }
 
     public LegalNature getLegalNature() {
-        return legalNature;
+        return Objects.isNull(legalNature) ? new LegalNature() : legalNature;
     }
 
     public AdditionalOutputData getAdditionalOutputData() {
-        return additionalOutputData;
+        return Objects.isNull(additionalOutputData) ? new AdditionalOutputData() : additionalOutputData;
     }
 }

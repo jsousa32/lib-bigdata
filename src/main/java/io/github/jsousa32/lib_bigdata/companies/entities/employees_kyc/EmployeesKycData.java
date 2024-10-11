@@ -1,13 +1,9 @@
 package io.github.jsousa32.lib_bigdata.companies.entities.employees_kyc;
 
+import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
-/**
- * The Class EmployeesKycData
- *
- * @author João Lucas Silva de Sousa
- * @sincer 09/10/2024
- */
 public class EmployeesKycData {
 
     private String taxIdNumber;
@@ -55,7 +51,7 @@ public class EmployeesKycData {
     }
 
     public Map<String, EmployeeDataDetails> getEmployeeDataDetails() {
-        return employeeDataDetails;
+        return Objects.isNull(employeeDataDetails) ? new HashMap<>() : employeeDataDetails;
     }
 
     public int getTotalCurrentlyPep() {

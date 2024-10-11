@@ -2,15 +2,8 @@ package io.github.jsousa32.lib_bigdata.companies.entities.employees_kyc;
 
 import io.github.jsousa32.lib_bigdata.companies.entities.economic_group_kyc.PepHistory;
 
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-/**
- * The Class EmployeeDataDetails
- *
- * @author João Lucas Silva de Sousa
- * @sincer 09/10/2024
- */
 public class EmployeeDataDetails {
 
     private List<PepHistory> pepHistory;
@@ -54,7 +47,7 @@ public class EmployeeDataDetails {
     private Map<String, String> electoralDonations;
 
     public List<PepHistory> getPepHistory() {
-        return pepHistory;
+        return Objects.isNull(pepHistory) ? new ArrayList<>() : pepHistory;
     }
 
     public boolean isCurrentlyPep() {
@@ -62,7 +55,7 @@ public class EmployeeDataDetails {
     }
 
     public List<SanctionsHistory> getSanctionsHistory() {
-        return sanctionsHistory;
+        return Objects.isNull(sanctionsHistory) ? new ArrayList<>() : sanctionsHistory;
     }
 
     public boolean isCurrentlySanctioned() {
@@ -130,6 +123,6 @@ public class EmployeeDataDetails {
     }
 
     public Map<String, String> getElectoralDonations() {
-        return electoralDonations;
+        return Objects.isNull(electoralDonations) ? new HashMap<>() : electoralDonations;
     }
 }
