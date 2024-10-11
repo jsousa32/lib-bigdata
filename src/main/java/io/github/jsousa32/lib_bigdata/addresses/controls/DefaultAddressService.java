@@ -1,6 +1,7 @@
 package io.github.jsousa32.lib_bigdata.addresses.controls;
 
 import io.github.jsousa32.lib_bigdata.addresses.entities.basic_data.BasicData;
+import io.github.jsousa32.lib_bigdata.application.entities.enums.Dataset;
 import io.github.jsousa32.lib_bigdata.application.entities.enums.Scope;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -22,12 +23,11 @@ public class DefaultAddressService implements AddressService {
 
     @Override
     public BasicData basicData(String zipCode) {
-        return execute(zipCode, Scope.BASIC_DATA, BasicData.class);
+        return execute(zipCode, Dataset.BASIC_DATA, BasicData.class);
     }
 
-    private <T> T execute(String zipCode, Scope scope, Class<T> responseType) {
-        this.uri.queryParam("zipCode", zipCode);
-        this.uri.path(scope.getDataset());
+    private <T> T execute(String zipCode, Dataset dataset, Class<T> responseType) {
+        this.uri.pathSegment(Scope.ADDRESS.getLabel()).pathSegment(dataset.getLabel()).queryParam("zipCode", zipCode);
 
         return restTemplate.exchange(this.uri.toUriString(), HttpMethod.GET, this.httpEntity, responseType).getBody();
     }

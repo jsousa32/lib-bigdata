@@ -1,50 +1,26 @@
 package io.github.jsousa32.lib_bigdata.application.entities.enums;
 
+/**
+ * The Enum Scope
+ *
+ * @author João Lucas Silva de Sousa
+ * @sincer 11/10/2024
+ */
 public enum Scope {
 
-    REGISTRATION("registration_data"),
+    COMPANY("company"),
 
-    BASIC_DATA("basic_data"),
+    PERSON("person"),
 
-    ECONOMIC_GROUP_KYC("economic_group_kyc"),
+    ADDRESS("address");
 
-    EMPLOYEES_KYC("employees_kyc"),
+    private final String label;
 
-    KYC("kyc"),
-
-    LAWSUITS_DISTRIBUTION_DATA("lawsuits_distribution_data"),
-
-    OWNERS_LAWSUITS("owners_lawsuits"),
-
-    OWNERS_LAWSUITS_DISTRIBUTION_DATA("owners_lawsuits_distribution_data"),
-
-    PROCESSES("processes"),
-
-    COLLECTIONS("collections"),
-
-    FAMILY_LAWSUITS_DISTRIBUTION_DATA("family_lawsuits_distribution_data"),
-
-    FINANCIAL_RISK("financial_risk"),
-
-    FIRST_LEVEL_RELATIVES_LAWSUITS_DATA("first_level_relatives_lawsuit_data"),
-
-    GOVERNMENT_DEBTORS("government_debtors"),
-
-    INDEBTEDNESS_QUESTION("indebtedness_question"),
-
-    OCCUPATION_DATA("occupation_data"),
-
-    UNIVERSITY_STUNDENT_DATA("university_student_data"),
-
-    VEHICLES("vehicles");
-
-    private final String dataset;
-
-    Scope(String dataset) {
-        this.dataset = dataset;
+    Scope(String label) {
+        this.label = label;
     }
 
-    public String getDataset() {
-        return dataset;
+    public String getLabel() {
+        return label;
     }
 }

@@ -1,5 +1,6 @@
 package io.github.jsousa32.lib_bigdata.people.controls;
 
+import io.github.jsousa32.lib_bigdata.application.entities.enums.Dataset;
 import io.github.jsousa32.lib_bigdata.application.entities.enums.Scope;
 import io.github.jsousa32.lib_bigdata.people.entities.basic_data.BasicData;
 import io.github.jsousa32.lib_bigdata.people.entities.collections.Collections;
@@ -38,90 +39,86 @@ public class DefaultPersonService implements PersonService {
 
     @Override
     public BasicData basicData(String document) {
-        return execute(document, Scope.BASIC_DATA, BasicData.class);
+        return execute(document, Dataset.BASIC_DATA, BasicData.class);
     }
 
     @Override
     public Collections collections(String document) {
-        return execute(document, Scope.COLLECTIONS, Collections.class);
+        return execute(document, Dataset.COLLECTIONS, Collections.class);
     }
 
     @Override
     public RelatedLawsuitsDistributionData relatedLawsuitsDistributionData(String document) {
-        return execute(document, Scope.FAMILY_LAWSUITS_DISTRIBUTION_DATA, RelatedLawsuitsDistributionData.class);
+        return execute(document, Dataset.FAMILY_LAWSUITS_DISTRIBUTION_DATA, RelatedLawsuitsDistributionData.class);
     }
 
     @Override
     public FinancialRisk financialRisk(String document) {
-        return execute(document, Scope.FINANCIAL_RISK, FinancialRisk.class);
+        return execute(document, Dataset.FINANCIAL_RISK, FinancialRisk.class);
     }
 
     @Override
     public List<FirstLevelRelativesLawsuitsData> firstLevelRelativesLawsuitsData(String document) {
-        return execute(document, Scope.FIRST_LEVEL_RELATIVES_LAWSUITS_DATA, new ParameterizedTypeReference<List<FirstLevelRelativesLawsuitsData>>() {
+        return execute(document, Dataset.FIRST_LEVEL_RELATIVES_LAWSUITS_DATA, new ParameterizedTypeReference<List<FirstLevelRelativesLawsuitsData>>() {
         });
     }
 
     @Override
     public GovernmentDebtors governmentDebtors(String document) {
-        return execute(document, Scope.GOVERNMENT_DEBTORS, GovernmentDebtors.class);
+        return execute(document, Dataset.GOVERNMENT_DEBTORS, GovernmentDebtors.class);
     }
 
     @Override
     public IndebtednessQuestion indebtednessQuestion(String document) {
-        return execute(document, Scope.INDEBTEDNESS_QUESTION, IndebtednessQuestion.class);
+        return execute(document, Dataset.INDEBTEDNESS_QUESTION, IndebtednessQuestion.class);
     }
 
     @Override
     public KycData kycData(String document) {
-        return execute(document, Scope.KYC, KycData.class);
+        return execute(document, Dataset.KYC, KycData.class);
     }
 
     @Override
     public LawsuitsDistributionData lawsuitsDistributionData(String document) {
-        return execute(document, Scope.LAWSUITS_DISTRIBUTION_DATA, LawsuitsDistributionData.class);
+        return execute(document, Dataset.LAWSUITS_DISTRIBUTION_DATA, LawsuitsDistributionData.class);
     }
 
     @Override
     public ProfessionData professionData(String document) {
-        return execute(document, Scope.OCCUPATION_DATA, ProfessionData.class);
+        return execute(document, Dataset.OCCUPATION_DATA, ProfessionData.class);
     }
 
     @Override
     public Page<LawsuitDetails> lawsuitDetails(int page, int size, String document) {
-        return execute(page, size, document, Scope.PROCESSES, new ParameterizedTypeReference<Page<LawsuitDetails>>() {
+        return execute(page, size, document, Dataset.PROCESSES, new ParameterizedTypeReference<Page<LawsuitDetails>>() {
         });
     }
 
     @Override
     public Scholarship scholarship(String document) {
-        return execute(document, Scope.UNIVERSITY_STUNDENT_DATA, Scholarship.class);
+        return execute(document, Dataset.UNIVERSITY_STUNDENT_DATA, Scholarship.class);
     }
 
     @Override
     public Vehicles vehicles(String document) {
-        return execute(document, Scope.VEHICLES, Vehicles.class);
+        return execute(document, Dataset.VEHICLES, Vehicles.class);
     }
 
-    private <T> T execute(String document, Scope scope, Class<T> responseType) {
-        this.uri.queryParam("document", document);
-        this.uri.path(scope.getDataset());
+    private <T> T execute(String document, Dataset dataset, Class<T> responseType) {
+        this.uri.pathSegment(Scope.PERSON.getLabel()).pathSegment(dataset.getLabel()).queryParam("document", document);
 
         return restTemplate.exchange(this.uri.toUriString(), HttpMethod.GET, this.httpEntity, responseType).getBody();
     }
 
-    private <T> T execute(String document, Scope scope, ParameterizedTypeReference<T> responseType) {
-        this.uri.queryParam("document", document);
-        this.uri.path(scope.getDataset());
+    private <T> T execute(String document, Dataset dataset, ParameterizedTypeReference<T> responseType) {
+        this.uri.pathSegment(Scope.PERSON.getLabel()).pathSegment(dataset.getLabel()).queryParam("document", document);
 
         return restTemplate.exchange(this.uri.toUriString(), HttpMethod.GET, this.httpEntity, responseType).getBody();
     }
 
-    private <T> T execute(int page, int size, String document, Scope scope, ParameterizedTypeReference<T> responseType) {
-        this.uri.queryParam("page", page);
-        this.uri.queryParam("size", size);
-        this.uri.queryParam("document", document);
-        this.uri.path(scope.getDataset());
+    private <T> T execute(int page, int size, String document, Dataset dataset, ParameterizedTypeReference<T> responseType) {
+        this.uri.pathSegment(Scope.PERSON.getLabel()).pathSegment(dataset.getLabel())
+                .queryParam("page", page).queryParam("size", size).queryParam("document", document);
 
         return restTemplate.exchange(this.uri.toUriString(), HttpMethod.GET, this.httpEntity, responseType).getBody();
     }
