@@ -8,7 +8,9 @@ public enum Scope {
 
     ECONOMIC_GROUP_KYC("economic_group_kyc"),
 
-    EMPLOYEES_KYC("employees_kyc");
+    EMPLOYEES_KYC("employees_kyc"),
+
+    KYC("kyc");
 
     private final String dataset;
 

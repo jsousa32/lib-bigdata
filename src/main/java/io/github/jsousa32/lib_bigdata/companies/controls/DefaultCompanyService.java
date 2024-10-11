@@ -3,6 +3,7 @@ package io.github.jsousa32.lib_bigdata.companies.controls;
 import io.github.jsousa32.lib_bigdata.application.entities.enums.Scope;
 import io.github.jsousa32.lib_bigdata.companies.entities.economic_group_kyc.EconomicGroupKycData;
 import io.github.jsousa32.lib_bigdata.companies.entities.employees_kyc.EmployeesKycData;
+import io.github.jsousa32.lib_bigdata.companies.entities.kyc.KycData;
 import io.github.jsousa32.lib_bigdata.companies.entities.registration_data.BasicData;
 import io.github.jsousa32.lib_bigdata.companies.entities.registration_data.RegistrationData;
 import org.springframework.http.HttpEntity;
@@ -41,6 +42,11 @@ public class DefaultCompanyService implements CompanyService {
     @Override
     public EmployeesKycData employeesKycData(String document) {
         return execute(document, Scope.EMPLOYEES_KYC, EmployeesKycData.class);
+    }
+
+    @Override
+    public KycData kycData(String document) {
+        return execute(document, Scope.KYC, KycData.class);
     }
 
     private <T> T execute(String document, Scope scope, Class<T> responseType) {
