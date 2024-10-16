@@ -1,11 +1,5 @@
 package io.github.jsousa32.lib_bigdata.application.entities.enums;
 
-/**
- * The Enum Scope
- *
- * @author João Lucas Silva de Sousa
- * @sincer 11/10/2024
- */
 public enum Scope {
 
     COMPANY("company"),
