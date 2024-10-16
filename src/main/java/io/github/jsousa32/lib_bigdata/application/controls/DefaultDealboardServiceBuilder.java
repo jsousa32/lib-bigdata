@@ -7,23 +7,23 @@ public class DefaultDealboardServiceBuilder implements DealboardService.Builder 
 
     private static final String BASE_URL = "http://192.168.0.125:8080/v1/api/bigdata/";
 
-    private static final String ACCESS_TOKEN = "AccessToken";
+    private static final String TOKEN = "Token";
 
-    private static final String DOCUMENT = "Document";
+    private static final String KEY = "Key";
 
-    private String accessToken;
+    private String token;
 
-    private String document;
+    private String key;
 
     @Override
-    public DealboardService.Builder accessToken(String accessToken) {
-        this.accessToken = accessToken;
+    public DealboardService.Builder token(String accessToken) {
+        this.token = accessToken;
         return this;
     }
 
     @Override
-    public DealboardService.Builder document(String document) {
-        this.document = document;
+    public DealboardService.Builder key(String document) {
+        this.key = document;
         return this;
     }
 
@@ -35,11 +35,11 @@ public class DefaultDealboardServiceBuilder implements DealboardService.Builder 
     }
 
     private void validatedFields() {
-        if (this.accessToken == null) {
+        if (this.token == null) {
             throw new IllegalArgumentException("Missing required parameter: accessToken");
         }
 
-        if (this.document == null) {
+        if (this.key == null) {
             throw new IllegalArgumentException("Missing required parameter: document");
         }
     }
@@ -51,8 +51,8 @@ public class DefaultDealboardServiceBuilder implements DealboardService.Builder 
     private HttpHeaders generateHeaders() {
         HttpHeaders httpHeaders = new HttpHeaders();
 
-        httpHeaders.add(ACCESS_TOKEN, this.accessToken);
-        httpHeaders.add(DOCUMENT, this.document);
+        httpHeaders.add(TOKEN, this.token);
+        httpHeaders.add(KEY, this.key);
 
         return httpHeaders;
     }
