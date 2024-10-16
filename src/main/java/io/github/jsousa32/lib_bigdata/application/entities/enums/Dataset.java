@@ -36,7 +36,16 @@ public enum Dataset {
 
     UNIVERSITY_STUNDENT_DATA("university_student_data"),
 
-    VEHICLES("vehicles");
+    VEHICLES("vehicles"),
+
+    LEGAL("legal"),
+
+    LEGAL_SIMPLE("legal-simple"),
+
+    NATURAL("natural"),
+
+    NATURAL_SIMPLE("natural-simple");
+
 
     private final String label;
 

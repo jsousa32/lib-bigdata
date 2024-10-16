@@ -7,9 +7,9 @@ public interface DealboardService {
     }
 
     interface Builder {
-        Builder accessToken(String accessToken);
+        Builder token(String accessToken);
 
-        Builder document(String document);
+        Builder key(String document);
 
         DealbordFactory build();
     }

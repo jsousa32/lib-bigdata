@@ -4,6 +4,8 @@ import io.github.jsousa32.lib_bigdata.addresses.controls.AddressService;
 import io.github.jsousa32.lib_bigdata.addresses.controls.DefaultAddressService;
 import io.github.jsousa32.lib_bigdata.companies.controls.CompanyService;
 import io.github.jsousa32.lib_bigdata.companies.controls.DefaultCompanyService;
+import io.github.jsousa32.lib_bigdata.custom.controls.CustomService;
+import io.github.jsousa32.lib_bigdata.custom.controls.DefaultCustomService;
 import io.github.jsousa32.lib_bigdata.people.controls.DefaultPersonService;
 import io.github.jsousa32.lib_bigdata.people.controls.PersonService;
 import org.springframework.http.HttpEntity;
@@ -34,5 +36,10 @@ public class DefaultDealboardFactory implements DealbordFactory {
     @Override
     public AddressService address() {
         return new DefaultAddressService(this.uri, this.httpEntity);
+    }
+
+    @Override
+    public CustomService custom() {
+        return new DefaultCustomService(this.uri, this.httpEntity);
     }
 }

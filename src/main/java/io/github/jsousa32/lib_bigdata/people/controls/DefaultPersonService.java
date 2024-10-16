@@ -1,6 +1,7 @@
 package io.github.jsousa32.lib_bigdata.people.controls;
 
 import io.github.jsousa32.lib_bigdata.application.entities.enums.Dataset;
+import io.github.jsousa32.lib_bigdata.application.entities.enums.Domain;
 import io.github.jsousa32.lib_bigdata.application.entities.enums.Scope;
 import io.github.jsousa32.lib_bigdata.people.entities.basic_data.BasicData;
 import io.github.jsousa32.lib_bigdata.people.entities.collections.Collections;
@@ -105,19 +106,19 @@ public class DefaultPersonService implements PersonService {
     }
 
     private <T> T execute(String document, Dataset dataset, Class<T> responseType) {
-        this.uri.pathSegment(Scope.PERSON.getLabel()).pathSegment(dataset.getLabel()).queryParam("document", document);
+        this.uri.pathSegment(Domain.BIGDATA.getLabel()).pathSegment(Scope.PERSON.getLabel()).pathSegment(dataset.getLabel()).queryParam("document", document);
 
         return restTemplate.exchange(this.uri.toUriString(), HttpMethod.GET, this.httpEntity, responseType).getBody();
     }
 
     private <T> T execute(String document, Dataset dataset, ParameterizedTypeReference<T> responseType) {
-        this.uri.pathSegment(Scope.PERSON.getLabel()).pathSegment(dataset.getLabel()).queryParam("document", document);
+        this.uri.pathSegment(Domain.BIGDATA.getLabel()).pathSegment(Scope.PERSON.getLabel()).pathSegment(dataset.getLabel()).queryParam("document", document);
 
         return restTemplate.exchange(this.uri.toUriString(), HttpMethod.GET, this.httpEntity, responseType).getBody();
     }
 
     private <T> T execute(int page, int size, String document, Dataset dataset, ParameterizedTypeReference<T> responseType) {
-        this.uri.pathSegment(Scope.PERSON.getLabel()).pathSegment(dataset.getLabel())
+        this.uri.pathSegment(Domain.BIGDATA.getLabel()).pathSegment(Scope.PERSON.getLabel()).pathSegment(dataset.getLabel())
                 .queryParam("page", page).queryParam("size", size).queryParam("document", document);
 
         return restTemplate.exchange(this.uri.toUriString(), HttpMethod.GET, this.httpEntity, responseType).getBody();
