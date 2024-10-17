@@ -16,7 +16,7 @@ public class CompanyLegal extends Company {
 
     private Set<Cnae> cnaes = new HashSet<>();
 
-    private Set<LegalRepresentative> legalRepresentativeSchemas = new HashSet<>();
+    private Set<LegalRepresentative> legalRepresentatives = new HashSet<>();
 
     public String getLegalNature() {
         return legalNature;
@@ -58,11 +58,11 @@ public class CompanyLegal extends Company {
         this.cnaes = cnaes;
     }
 
-    public Set<LegalRepresentative> getLegalRepresentativeSchemas() {
-        return legalRepresentativeSchemas;
+    public Set<LegalRepresentative> getLegalRepresentatives() {
+        return legalRepresentatives;
     }
 
-    public void setLegalRepresentativeSchemas(Set<LegalRepresentative> legalRepresentativeSchemas) {
-        this.legalRepresentativeSchemas = legalRepresentativeSchemas;
+    public void setLegalRepresentatives(Set<LegalRepresentative> legalRepresentatives) {
+        this.legalRepresentatives = legalRepresentatives;
     }
 }
