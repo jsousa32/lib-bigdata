@@ -6,7 +6,7 @@ import java.util.Set;
 
 public class CompanyLegalSimple extends Company {
 
-    private String legalNature;
+    private String taxRegime;
 
     private boolean headquartes;
 
@@ -16,12 +16,12 @@ public class CompanyLegalSimple extends Company {
 
     private Set<Cnae> cnaes = new HashSet<>();
 
-    public String getLegalNature() {
-        return legalNature;
+    public String getTaxRegime() {
+        return taxRegime;
     }
 
-    public void setLegalNature(String legalNature) {
-        this.legalNature = legalNature;
+    public void setTaxRegime(String taxRegime) {
+        this.taxRegime = taxRegime;
     }
 
     public boolean isHeadquartes() {

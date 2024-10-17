@@ -8,7 +8,7 @@ public class CompanyNatural extends Company {
 
     private LocalDate birthday;
 
-    private Set<LegalRepresentative> legalRepresentatives = new HashSet<>();
+    private Set<LegalRepresentative> legalsRepresentatives = new HashSet<>();
 
     public LocalDate getBirthday() {
         return birthday;
@@ -18,11 +18,11 @@ public class CompanyNatural extends Company {
         this.birthday = birthday;
     }
 
-    public Set<LegalRepresentative> getLegalRepresentatives() {
-        return legalRepresentatives;
+    public Set<LegalRepresentative> getLegalsRepresentatives() {
+        return legalsRepresentatives;
     }
 
-    public void setLegalRepresentatives(Set<LegalRepresentative> legalRepresentatives) {
-        this.legalRepresentatives = legalRepresentatives;
+    public void setLegalsRepresentatives(Set<LegalRepresentative> legalsRepresentatives) {
+        this.legalsRepresentatives = legalsRepresentatives;
     }
 }
