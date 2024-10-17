@@ -1,6 +1,7 @@
 package io.github.jsousa32.lib_bigdata.application.controls;
 
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.web.util.UriComponentsBuilder;
 
 public class DefaultDealboardServiceBuilder implements DealboardService.Builder {
@@ -51,6 +52,7 @@ public class DefaultDealboardServiceBuilder implements DealboardService.Builder 
     private HttpHeaders generateHeaders() {
         HttpHeaders httpHeaders = new HttpHeaders();
 
+        httpHeaders.add(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE);
         httpHeaders.add(TOKEN, this.token);
         httpHeaders.add(KEY, this.key);
 
