@@ -1,5 +1,7 @@
 package io.github.jsousa32.lib_bigdata.custom.controls;
 
+import io.github.jsousa32.lib_bigdata.application.controls.DealboardEntityWrapper;
+import io.github.jsousa32.lib_bigdata.application.controls.DefaultDealboardEntityWrapper;
 import io.github.jsousa32.lib_bigdata.application.entities.enums.Dataset;
 import io.github.jsousa32.lib_bigdata.application.entities.enums.Domain;
 import io.github.jsousa32.lib_bigdata.application.entities.enums.Scope;
@@ -26,23 +28,27 @@ public class DefaultCustomService implements CustomService {
     }
 
     @Override
-    public CompanyLegal companyLegal(String document) {
-        return execute(document, Dataset.LEGAL, CompanyLegal.class);
+    public DealboardEntityWrapper<CompanyLegal> companyLegal(String document) {
+        return new DefaultDealboardEntityWrapper<>(
+                execute(document, Dataset.LEGAL, CompanyLegal.class), this.httpEntity, this.uri);
     }
 
     @Override
-    public CompanyNatural companyNatural(String document) {
-        return execute(document, Dataset.NATURAL, CompanyNatural.class);
+    public DealboardEntityWrapper<CompanyNatural> companyNatural(String document) {
+        return new DefaultDealboardEntityWrapper<>(
+                execute(document, Dataset.NATURAL, CompanyNatural.class), this.httpEntity, this.uri);
     }
 
     @Override
-    public CompanyLegalSimple companyLegalSimple(String document) {
-        return execute(document, Dataset.LEGAL_SIMPLE, CompanyLegalSimple.class);
+    public DealboardEntityWrapper<CompanyLegalSimple> companyLegalSimple(String document) {
+        return new DefaultDealboardEntityWrapper<>(
+                execute(document, Dataset.LEGAL_SIMPLE, CompanyLegalSimple.class), this.httpEntity, this.uri);
     }
 
     @Override
-    public CompanyNaturalSimple companyNaturalSimple(String document) {
-        return execute(document, Dataset.NATURAL_SIMPLE, CompanyNaturalSimple.class);
+    public DealboardEntityWrapper<CompanyNaturalSimple> companyNaturalSimple(String document) {
+        return new DefaultDealboardEntityWrapper<>(
+                execute(document, Dataset.NATURAL_SIMPLE, CompanyNaturalSimple.class), this.httpEntity, this.uri);
     }
 
     private <T> T execute(String document, Dataset dataset, Class<T> responseType) {
