@@ -4,6 +4,8 @@ public enum Scope {
 
     COMPANY("company"),
 
+    COMPANIES("companies"),
+
     PERSON("person"),
 
     ADDRESS("address");
