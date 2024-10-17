@@ -5,7 +5,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 public class DefaultDealboardServiceBuilder implements DealboardService.Builder {
 
-    private static final String BASE_URL = "http://192.168.0.125:8080/v1/api/integration/";
+    private static final String BASE_URL = "http://192.168.0.125:8080/api/v1/integration/";
 
     private static final String TOKEN = "Token";
 
