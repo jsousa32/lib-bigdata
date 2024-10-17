@@ -15,7 +15,7 @@ public class DefaultDealboardEntityWrapper<T> implements DealboardEntityWrapper<
 
     private T entity;
 
-    private final HttpEntity<String> httpEntity;
+    private final HttpEntity<T> httpEntity;
 
     private final String uri;
 
@@ -23,7 +23,7 @@ public class DefaultDealboardEntityWrapper<T> implements DealboardEntityWrapper<
 
     public DefaultDealboardEntityWrapper(T entity, HttpEntity<String> httpEntity, UriComponentsBuilder uri) {
         this.entity = entity;
-        this.httpEntity = httpEntity;
+        this.httpEntity = new HttpEntity<>(entity, httpEntity.getHeaders());
         this.uri = uri.replacePath(PATH_BASE).replaceQuery(null)
                 .pathSegment(Scope.COMPANIES.getLabel())
                 .pathSegment(IntegrationScope.getSegment(entity.getClass()))
