@@ -3,12 +3,6 @@ package io.github.jsousa32.lib_bigdata.application.entities.enums;
 import io.github.jsousa32.lib_bigdata.custom.entities.CompanyLegal;
 import io.github.jsousa32.lib_bigdata.custom.entities.CompanyNatural;
 
-/**
- * The Enum IntegrationScope
- *
- * @author João Lucas Silva de Sousa
- * @sincer 17/10/2024
- */
 public enum IntegrationScope {
     COMPANY_LEGAL(CompanyLegal.class, "legal"),
 
