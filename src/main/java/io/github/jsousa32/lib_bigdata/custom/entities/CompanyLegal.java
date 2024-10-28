@@ -6,6 +6,8 @@ import java.util.Set;
 
 public class CompanyLegal extends Company {
 
+    private String tradeName;
+
     private String taxRegime;
 
     private boolean headquartes;
@@ -17,6 +19,10 @@ public class CompanyLegal extends Company {
     private Set<Cnae> cnaes = new HashSet<>();
 
     private Set<LegalRepresentative> legalsRepresentatives = new HashSet<>();
+
+    public void setTradeName(String tradeName) {
+        this.tradeName = tradeName;
+    }
 
     public String getTaxRegime() {
         return taxRegime;
