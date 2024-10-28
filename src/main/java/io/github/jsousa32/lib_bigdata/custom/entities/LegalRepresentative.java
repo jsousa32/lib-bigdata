@@ -1,5 +1,7 @@
 package io.github.jsousa32.lib_bigdata.custom.entities;
 
+import io.github.jsousa32.lib_bigdata.custom.enums.Type;
+
 import java.time.LocalDate;
 
 public class LegalRepresentative {
@@ -13,6 +15,8 @@ public class LegalRepresentative {
     private String email;
 
     private LocalDate birthDate;
+
+    private Type type;
 
     private boolean politicallyExposed;
 
@@ -54,6 +58,14 @@ public class LegalRepresentative {
 
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
     }
 
     public boolean isPoliticallyExposed() {
