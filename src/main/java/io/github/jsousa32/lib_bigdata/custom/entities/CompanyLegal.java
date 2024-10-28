@@ -1,5 +1,7 @@
 package io.github.jsousa32.lib_bigdata.custom.entities;
 
+import io.github.jsousa32.lib_bigdata.custom.enums.TaxRegime;
+
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
@@ -8,7 +10,7 @@ public class CompanyLegal extends Company {
 
     private String tradeName;
 
-    private String taxRegime;
+    private TaxRegime taxRegime;
 
     private boolean headquartes;
 
@@ -24,11 +26,11 @@ public class CompanyLegal extends Company {
         this.tradeName = tradeName;
     }
 
-    public String getTaxRegime() {
+    public TaxRegime getTaxRegime() {
         return taxRegime;
     }
 
-    public void setTaxRegime(String taxRegime) {
+    public void setTaxRegime(TaxRegime taxRegime) {
         this.taxRegime = taxRegime;
     }
 
