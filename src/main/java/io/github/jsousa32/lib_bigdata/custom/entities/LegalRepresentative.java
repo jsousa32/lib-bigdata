@@ -2,8 +2,6 @@ package io.github.jsousa32.lib_bigdata.custom.entities;
 
 import io.github.jsousa32.lib_bigdata.custom.enums.Type;
 
-import java.time.LocalDate;
-
 public class LegalRepresentative {
 
     private String name;
@@ -14,7 +12,7 @@ public class LegalRepresentative {
 
     private String email;
 
-    private LocalDate birthDate;
+    private String birthDate;
 
     private Type type;
 
@@ -52,11 +50,11 @@ public class LegalRepresentative {
         this.email = email;
     }
 
-    public LocalDate getBirthDate() {
+    public String getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
+    public void setBirthDate(String birthDate) {
         this.birthDate = birthDate;
     }
 

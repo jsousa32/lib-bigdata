@@ -1,16 +1,14 @@
 package io.github.jsousa32.lib_bigdata.custom.entities;
 
-import java.time.LocalDate;
-
 public class CompanyNaturalSimple extends Company {
 
-    private LocalDate birthday;
+    private String birthday;
 
-    public LocalDate getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(LocalDate birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 }

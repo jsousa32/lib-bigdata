@@ -1,6 +1,5 @@
 package io.github.jsousa32.lib_bigdata.custom.entities;
 
-import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,7 +11,7 @@ public class CompanyLegalSimple extends Company {
 
     private boolean headquartes;
 
-    private LocalDate openingDate;
+    private String openingDate;
 
     private String capital;
 
@@ -42,11 +41,11 @@ public class CompanyLegalSimple extends Company {
         this.headquartes = headquartes;
     }
 
-    public LocalDate getOpeningDate() {
+    public String getOpeningDate() {
         return openingDate;
     }
 
-    public void setOpeningDate(LocalDate openingDate) {
+    public void setOpeningDate(String openingDate) {
         this.openingDate = openingDate;
     }
 

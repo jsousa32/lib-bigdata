@@ -1,5 +1,6 @@
 package io.github.jsousa32.lib_bigdata.custom.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.github.jsousa32.lib_bigdata.custom.enums.TaxRegime;
 
 import java.time.LocalDate;
@@ -14,7 +15,7 @@ public class CompanyLegal extends Company {
 
     private boolean headquartes;
 
-    private LocalDate openingDate;
+    private String openingDate;
 
     private String capital;
 
@@ -24,6 +25,10 @@ public class CompanyLegal extends Company {
 
     public void setTradeName(String tradeName) {
         this.tradeName = tradeName;
+    }
+
+    public String getTradeName() {
+        return tradeName;
     }
 
     public TaxRegime getTaxRegime() {
@@ -42,11 +47,11 @@ public class CompanyLegal extends Company {
         this.headquartes = headquartes;
     }
 
-    public LocalDate getOpeningDate() {
+    public String getOpeningDate() {
         return openingDate;
     }
 
-    public void setOpeningDate(LocalDate openingDate) {
+    public void setOpeningDate(String openingDate) {
         this.openingDate = openingDate;
     }
 
