@@ -4,7 +4,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.web.util.UriComponentsBuilder;
 
-public class DefaultDealboardServiceBuilder implements DealboardService.Builder {
+public class DefaultDealboardBuilder implements DealboardBuilder.Builder {
 
     private static final String BASE_URL = "http://192.168.0.125:8080/api/v1/integration/";
 
@@ -12,35 +12,28 @@ public class DefaultDealboardServiceBuilder implements DealboardService.Builder 
 
     private static final String KEY = "Key";
 
-    private String token;
+    private final String token;
 
-    private String key;
+    private final String key;
 
-    @Override
-    public DealboardService.Builder token(String accessToken) {
-        this.token = accessToken;
-        return this;
+    public DefaultDealboardBuilder(String token, String key) {
+        this.token = token;
+        this.key = key;
     }
 
     @Override
-    public DealboardService.Builder key(String document) {
-        this.key = document;
-        return this;
-    }
-
-    @Override
-    public DealbordFactory build() {
+    public DealboardService build() {
         validatedFields();
 
-        return new DefaultDealboardFactory(this.generateUri(), this.generateHeaders());
+        return new DefaultDealboardService(this.generateUri(), this.generateHeaders());
     }
 
     private void validatedFields() {
-        if (this.token == null) {
+        if (this.token == null || this.token.isEmpty() || this.token.isBlank()) {
             throw new IllegalArgumentException("Missing required parameter: accessToken");
         }
 
-        if (this.key == null) {
+        if (this.key == null || this.key.isEmpty() || this.key.isBlank()) {
             throw new IllegalArgumentException("Missing required parameter: document");
         }
     }

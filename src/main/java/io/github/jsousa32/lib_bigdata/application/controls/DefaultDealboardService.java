@@ -18,7 +18,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-public class DefaultDealboardFactory implements DealbordFactory {
+public class DefaultDealboardService implements DealboardService {
 
     private final static String PATH_BASE = "/api/v1/integration/";
 
@@ -28,7 +28,7 @@ public class DefaultDealboardFactory implements DealbordFactory {
 
     private final RestTemplate restTemplate = new RestTemplate();
 
-    public DefaultDealboardFactory(UriComponentsBuilder uri, HttpHeaders headers) {
+    public DefaultDealboardService(UriComponentsBuilder uri, HttpHeaders headers) {
         this.uri = uri;
         this.httpEntity = new HttpEntity<>(headers);
     }
