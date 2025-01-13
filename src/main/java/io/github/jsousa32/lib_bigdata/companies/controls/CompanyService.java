@@ -11,8 +11,14 @@ import io.github.jsousa32.lib_bigdata.companies.entities.owners_lawsuits_distrib
 import io.github.jsousa32.lib_bigdata.companies.entities.registration_data.BasicData;
 import io.github.jsousa32.lib_bigdata.companies.entities.registration_data.RegistrationData;
 import io.github.jsousa32.lib_bigdata.utils.Page;
+import org.springframework.http.HttpEntity;
+import org.springframework.web.util.UriComponentsBuilder;
 
 public interface CompanyService {
+
+    static CompanyService builder(UriComponentsBuilder uri, HttpEntity<String> httpEntity) {
+        return new DefaultCompanyService(uri, httpEntity);
+    }
 
     RegistrationData registrationData(String document);
 

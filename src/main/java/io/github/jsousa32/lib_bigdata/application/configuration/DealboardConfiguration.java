@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class DealboardConfiguration {
+class DealboardConfiguration {
 
     @Bean
     public DealboardService dealboardService(@Autowired(required = false) DealboardCredentials dealboardCredentials) {

@@ -9,7 +9,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.function.Function;
 
-public class DefaultDealboardEntityWrapper<T> implements DealboardEntityWrapper<T> {
+final class DefaultDealboardEntityWrapper<T> implements DealboardEntityWrapper<T> {
 
     private final static String PATH_BASE = "/api/v1/integration/";
 

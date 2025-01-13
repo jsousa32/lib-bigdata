@@ -4,9 +4,9 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.web.util.UriComponentsBuilder;
 
-public class DefaultDealboardBuilder implements DealboardBuilder.Builder {
+final class DefaultDealboardBuilder implements DealboardBuilder.Builder {
 
-    private static final String BASE_URL = "http://192.168.0.125:8080/api/v1/integration/";
+    private static final String BASE_URL = "http://192.168.0.105:8080/api/v1/integration/";
 
     private static final String TOKEN = "Token";
 

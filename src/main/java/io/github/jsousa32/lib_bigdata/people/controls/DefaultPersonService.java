@@ -25,7 +25,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 
-public class DefaultPersonService implements PersonService {
+final class DefaultPersonService implements PersonService {
 
     private final UriComponentsBuilder uri;
 

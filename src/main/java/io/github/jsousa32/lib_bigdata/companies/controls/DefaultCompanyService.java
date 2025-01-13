@@ -19,7 +19,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-public class DefaultCompanyService implements CompanyService {
+final class DefaultCompanyService implements CompanyService {
 
     private final UriComponentsBuilder uri;
 

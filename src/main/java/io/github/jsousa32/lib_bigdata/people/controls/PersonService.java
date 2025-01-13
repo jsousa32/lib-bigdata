@@ -14,10 +14,16 @@ import io.github.jsousa32.lib_bigdata.people.entities.processes.LawsuitDetails;
 import io.github.jsousa32.lib_bigdata.people.entities.university_student_data.Scholarship;
 import io.github.jsousa32.lib_bigdata.people.entities.vehicles.Vehicles;
 import io.github.jsousa32.lib_bigdata.utils.Page;
+import org.springframework.http.HttpEntity;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 
 public interface PersonService {
+
+    static PersonService builder(UriComponentsBuilder uri, HttpEntity<String> httpEntity) {
+        return new DefaultPersonService(uri, httpEntity);
+    }
 
     BasicData basicData(String document);
 

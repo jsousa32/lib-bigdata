@@ -8,7 +8,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-public class DefaultAddressService implements AddressService {
+final class DefaultAddressService implements AddressService {
 
     private final UriComponentsBuilder uri;
 

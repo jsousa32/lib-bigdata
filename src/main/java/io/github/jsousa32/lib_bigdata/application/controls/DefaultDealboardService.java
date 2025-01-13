@@ -1,16 +1,12 @@
 package io.github.jsousa32.lib_bigdata.application.controls;
 
 import io.github.jsousa32.lib_bigdata.addresses.controls.AddressService;
-import io.github.jsousa32.lib_bigdata.addresses.controls.DefaultAddressService;
 import io.github.jsousa32.lib_bigdata.application.entities.enums.IntegrationScope;
 import io.github.jsousa32.lib_bigdata.application.entities.enums.Scope;
 import io.github.jsousa32.lib_bigdata.companies.controls.CompanyService;
-import io.github.jsousa32.lib_bigdata.companies.controls.DefaultCompanyService;
 import io.github.jsousa32.lib_bigdata.custom.controls.CustomService;
-import io.github.jsousa32.lib_bigdata.custom.controls.DefaultCustomService;
 import io.github.jsousa32.lib_bigdata.custom.entities.CompanyLegal;
 import io.github.jsousa32.lib_bigdata.custom.entities.CompanyNatural;
-import io.github.jsousa32.lib_bigdata.people.controls.DefaultPersonService;
 import io.github.jsousa32.lib_bigdata.people.controls.PersonService;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -18,7 +14,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-public class DefaultDealboardService implements DealboardService {
+final class DefaultDealboardService implements DealboardService {
 
     private final static String PATH_BASE = "/api/v1/integration/";
 
@@ -35,22 +31,22 @@ public class DefaultDealboardService implements DealboardService {
 
     @Override
     public CompanyService company() {
-        return new DefaultCompanyService(this.uri, this.httpEntity);
+        return CompanyService.builder(uri(), this.httpEntity);
     }
 
     @Override
     public PersonService person() {
-        return new DefaultPersonService(this.uri, this.httpEntity);
+        return PersonService.builder(uri(), this.httpEntity);
     }
 
     @Override
     public AddressService address() {
-        return new DefaultAddressService(this.uri, this.httpEntity);
+        return AddressService.builder(uri(), this.httpEntity);
     }
 
     @Override
     public CustomService custom() {
-        return new DefaultCustomService(this.uri, this.httpEntity);
+        return CustomService.builder(uri(), this.httpEntity);
     }
 
     @Override
@@ -61,6 +57,10 @@ public class DefaultDealboardService implements DealboardService {
     @Override
     public void create(CompanyNatural companyNatural) {
         restTemplate.exchange(uri(CompanyNatural.class), HttpMethod.POST, this.httpEntity, Void.class, companyNatural);
+    }
+
+    private UriComponentsBuilder uri() {
+        return this.uri.replacePath(PATH_BASE).replaceQuery(null);
     }
 
     private String uri(Class<?> clazz) {

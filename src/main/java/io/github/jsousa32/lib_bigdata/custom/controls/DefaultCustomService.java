@@ -1,7 +1,6 @@
 package io.github.jsousa32.lib_bigdata.custom.controls;
 
 import io.github.jsousa32.lib_bigdata.application.controls.DealboardEntityWrapper;
-import io.github.jsousa32.lib_bigdata.application.controls.DefaultDealboardEntityWrapper;
 import io.github.jsousa32.lib_bigdata.application.entities.enums.Dataset;
 import io.github.jsousa32.lib_bigdata.application.entities.enums.Domain;
 import io.github.jsousa32.lib_bigdata.application.entities.enums.Scope;
@@ -14,7 +13,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
-public class DefaultCustomService implements CustomService {
+final class DefaultCustomService implements CustomService {
 
     private final UriComponentsBuilder uri;
 
@@ -29,25 +28,25 @@ public class DefaultCustomService implements CustomService {
 
     @Override
     public DealboardEntityWrapper<CompanyLegal> companyLegal(String document) {
-        return new DefaultDealboardEntityWrapper<>(
+        return DealboardEntityWrapper.builder(
                 execute(document, Dataset.LEGAL, CompanyLegal.class), this.httpEntity, this.uri);
     }
 
     @Override
     public DealboardEntityWrapper<CompanyNatural> companyNatural(String document) {
-        return new DefaultDealboardEntityWrapper<>(
+        return DealboardEntityWrapper.builder(
                 execute(document, Dataset.NATURAL, CompanyNatural.class), this.httpEntity, this.uri);
     }
 
     @Override
     public DealboardEntityWrapper<CompanyLegalSimple> companyLegalSimple(String document) {
-        return new DefaultDealboardEntityWrapper<>(
+        return DealboardEntityWrapper.builder(
                 execute(document, Dataset.LEGAL_SIMPLE, CompanyLegalSimple.class), this.httpEntity, this.uri);
     }
 
     @Override
     public DealboardEntityWrapper<CompanyNaturalSimple> companyNaturalSimple(String document) {
-        return new DefaultDealboardEntityWrapper<>(
+        return DealboardEntityWrapper.builder(
                 execute(document, Dataset.NATURAL_SIMPLE, CompanyNaturalSimple.class), this.httpEntity, this.uri);
     }
 
