@@ -2,7 +2,7 @@ package io.github.jsousa32.lib_bigdata.application.entities.enums;
 
 public enum Domain {
 
-    BIGDATA("bidata"),
+    BIGDATA("bigdata"),
 
     CUSTOM("custom");
 
