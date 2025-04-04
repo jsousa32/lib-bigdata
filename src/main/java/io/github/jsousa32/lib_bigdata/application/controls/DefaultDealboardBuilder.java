@@ -6,8 +6,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 final class DefaultDealboardBuilder implements DealboardBuilder.Builder {
 
-    private static final String BASE_URL = "http://192.168.0.105:8080/api/v1/integration/";
-
     private static final String TOKEN = "Token";
 
     private static final String KEY = "Key";
@@ -16,9 +14,12 @@ final class DefaultDealboardBuilder implements DealboardBuilder.Builder {
 
     private final String key;
 
-    public DefaultDealboardBuilder(String token, String key) {
+    private final String url;
+
+    public DefaultDealboardBuilder(String token, String key, String url) {
         this.token = token;
         this.key = key;
+        this.url = url.concat("/api/v1/integration/");
     }
 
     @Override
@@ -30,16 +31,20 @@ final class DefaultDealboardBuilder implements DealboardBuilder.Builder {
 
     private void validatedFields() {
         if (this.token == null || this.token.isEmpty() || this.token.isBlank()) {
-            throw new IllegalArgumentException("Missing required parameter: accessToken");
+            throw new IllegalArgumentException("Missing required parameter: token");
         }
 
         if (this.key == null || this.key.isEmpty() || this.key.isBlank()) {
-            throw new IllegalArgumentException("Missing required parameter: document");
+            throw new IllegalArgumentException("Missing required parameter: key");
+        }
+
+        if (this.url == null || this.url.isEmpty() || this.url.isBlank()) {
+            throw new IllegalArgumentException("Missing required parameter: url");
         }
     }
 
     private UriComponentsBuilder generateUri() {
-        return UriComponentsBuilder.fromHttpUrl(BASE_URL);
+        return UriComponentsBuilder.fromHttpUrl(this.url);
     }
 
     private HttpHeaders generateHeaders() {

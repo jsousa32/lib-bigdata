@@ -6,9 +6,12 @@ public class DealboardCredentials {
 
     private final String key;
 
-    public DealboardCredentials(String token, String key) {
+    private final String url;
+
+    public DealboardCredentials(String token, String key, String url) {
         this.token = token;
         this.key = key;
+        this.url = url;
     }
 
     public String getToken() {
@@ -17,5 +20,9 @@ public class DealboardCredentials {
 
     public String getKey() {
         return key;
+    }
+
+    public String getUrl() {
+        return url;
     }
 }

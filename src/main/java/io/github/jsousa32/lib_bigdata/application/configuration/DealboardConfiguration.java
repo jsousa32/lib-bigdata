@@ -16,6 +16,6 @@ class DealboardConfiguration {
             throw new IllegalArgumentException("DealboardCredentials bean not found. Please define a bean of type DealboardCredentials.");
         }
 
-        return DealboardBuilder.builder(dealboardCredentials.getToken(), dealboardCredentials.getKey());
+        return DealboardBuilder.builder(dealboardCredentials.getToken(), dealboardCredentials.getKey(), dealboardCredentials.getUrl());
     }
 }
