@@ -4,9 +4,9 @@ import io.github.jsousa32.lib_bigdata.custom.entities.CompanyLegal;
 import io.github.jsousa32.lib_bigdata.custom.entities.CompanyNatural;
 
 public enum IntegrationScope {
-    COMPANY_LEGAL(CompanyLegal.class, "legal"),
+    COMPANY_LEGAL(CompanyLegal.class, "create-legal"),
 
-    COMPANY_NATURAL(CompanyNatural.class, "natural");
+    COMPANY_NATURAL(CompanyNatural.class, "create-natural");
 
     private final Class<?> clazz;
 
