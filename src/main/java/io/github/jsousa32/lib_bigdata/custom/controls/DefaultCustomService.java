@@ -9,6 +9,7 @@ import io.github.jsousa32.lib_bigdata.custom.entities.CompanyLegalSimple;
 import io.github.jsousa32.lib_bigdata.custom.entities.CompanyNatural;
 import io.github.jsousa32.lib_bigdata.custom.entities.CompanyNaturalSimple;
 import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -21,9 +22,9 @@ final class DefaultCustomService implements CustomService {
 
     private final RestTemplate restTemplate = new RestTemplate();
 
-    public DefaultCustomService(UriComponentsBuilder uri, HttpEntity<String> httpEntity) {
+    public DefaultCustomService(UriComponentsBuilder uri, HttpHeaders headers) {
         this.uri = uri;
-        this.httpEntity = httpEntity;
+        this.httpEntity = new HttpEntity<>(headers);
     }
 
     @Override

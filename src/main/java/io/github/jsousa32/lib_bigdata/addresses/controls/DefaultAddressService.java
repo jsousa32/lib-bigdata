@@ -4,6 +4,7 @@ import io.github.jsousa32.lib_bigdata.addresses.entities.basic_data.BasicData;
 import io.github.jsousa32.lib_bigdata.application.entities.enums.Dataset;
 import io.github.jsousa32.lib_bigdata.application.entities.enums.Scope;
 import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -16,9 +17,9 @@ final class DefaultAddressService implements AddressService {
 
     private final RestTemplate restTemplate = new RestTemplate();
 
-    public DefaultAddressService(UriComponentsBuilder uri, HttpEntity<String> httpEntity) {
+    public DefaultAddressService(UriComponentsBuilder uri, HttpHeaders headers) {
         this.uri = uri;
-        this.httpEntity = httpEntity;
+        this.httpEntity = new HttpEntity<>(headers);
     }
 
     @Override

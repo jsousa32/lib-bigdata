@@ -15,6 +15,7 @@ import io.github.jsousa32.lib_bigdata.companies.entities.registration_data.Regis
 import io.github.jsousa32.lib_bigdata.utils.Page;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -27,9 +28,9 @@ final class DefaultCompanyService implements CompanyService {
 
     private final RestTemplate restTemplate = new RestTemplate();
 
-    public DefaultCompanyService(UriComponentsBuilder uri, HttpEntity<String> httpEntity) {
+    public DefaultCompanyService(UriComponentsBuilder uri, HttpHeaders headers) {
         this.uri = uri;
-        this.httpEntity = httpEntity;
+        this.httpEntity = new HttpEntity<>(headers);
     }
 
     @Override

@@ -23,7 +23,7 @@ final class DefaultDealboardService implements DealboardService {
 
     private final UriComponentsBuilder uri;
 
-    private final HttpEntity<String> httpEntity;
+    private final HttpHeaders headers;
 
     private final RestTemplate restTemplate = new RestTemplate();
 
@@ -31,27 +31,27 @@ final class DefaultDealboardService implements DealboardService {
 
     public DefaultDealboardService(UriComponentsBuilder uri, HttpHeaders headers) {
         this.uri = uri;
-        this.httpEntity = new HttpEntity<>(headers);
+        this.headers = headers;
     }
 
     @Override
     public CompanyService company() {
-        return CompanyService.builder(uri(), this.httpEntity);
+        return CompanyService.builder(uri(), this.headers);
     }
 
     @Override
     public PersonService person() {
-        return PersonService.builder(uri(), this.httpEntity);
+        return PersonService.builder(uri(), this.headers);
     }
 
     @Override
     public AddressService address() {
-        return AddressService.builder(uri(), this.httpEntity);
+        return AddressService.builder(uri(), this.headers);
     }
 
     @Override
     public CustomService custom() {
-        return CustomService.builder(uri(), this.httpEntity);
+        return CustomService.builder(uri(), this.headers);
     }
 
     @Override
@@ -62,12 +62,14 @@ final class DefaultDealboardService implements DealboardService {
 
     @Override
     public void create(CompanyLegal companyLegal) {
-        restTemplate.exchange(uri(CompanyLegal.class), HttpMethod.POST, this.httpEntity, Void.class, companyLegal);
+        HttpEntity<CompanyLegal> httpEntity = new HttpEntity<>(companyLegal, this.headers);
+        restTemplate.exchange(uri(CompanyLegal.class), HttpMethod.POST, httpEntity, Void.class);
     }
 
     @Override
     public void create(CompanyNatural companyNatural) {
-        restTemplate.exchange(uri(CompanyNatural.class), HttpMethod.POST, this.httpEntity, Void.class, companyNatural);
+        HttpEntity<CompanyNatural> httpEntity = new HttpEntity<>(companyNatural, this.headers);
+        restTemplate.exchange(uri(CompanyNatural.class), HttpMethod.POST, httpEntity, Void.class, companyNatural);
     }
 
     private UriComponentsBuilder uri() {
@@ -79,8 +81,8 @@ final class DefaultDealboardService implements DealboardService {
 
         return uri
                 .replacePath(PATH_BASE)
-                .queryParam("registrationTypeId", this.registrationTypeId)
                 .replaceQuery(null)
+                .queryParam("registrationTypeId", this.registrationTypeId)
                 .pathSegment(Scope.COMPANIES.getLabel())
                 .pathSegment(IntegrationScope.getSegment(clazz))
                 .toUriString();

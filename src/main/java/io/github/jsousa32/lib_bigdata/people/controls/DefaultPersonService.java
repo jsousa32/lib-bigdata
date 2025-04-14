@@ -19,6 +19,7 @@ import io.github.jsousa32.lib_bigdata.people.entities.vehicles.Vehicles;
 import io.github.jsousa32.lib_bigdata.utils.Page;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -33,9 +34,9 @@ final class DefaultPersonService implements PersonService {
 
     private final RestTemplate restTemplate = new RestTemplate();
 
-    public DefaultPersonService(UriComponentsBuilder uri, HttpEntity<String> httpEntity) {
+    public DefaultPersonService(UriComponentsBuilder uri, HttpHeaders headers) {
         this.uri = uri;
-        this.httpEntity = httpEntity;
+        this.httpEntity = new HttpEntity<>(headers);
     }
 
     @Override

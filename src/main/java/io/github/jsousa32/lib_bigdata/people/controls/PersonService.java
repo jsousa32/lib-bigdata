@@ -15,14 +15,15 @@ import io.github.jsousa32.lib_bigdata.people.entities.university_student_data.Sc
 import io.github.jsousa32.lib_bigdata.people.entities.vehicles.Vehicles;
 import io.github.jsousa32.lib_bigdata.utils.Page;
 import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 
 public interface PersonService {
 
-    static PersonService builder(UriComponentsBuilder uri, HttpEntity<String> httpEntity) {
-        return new DefaultPersonService(uri, httpEntity);
+    static PersonService builder(UriComponentsBuilder uri, HttpHeaders headers) {
+        return new DefaultPersonService(uri, headers);
     }
 
     BasicData basicData(String document);

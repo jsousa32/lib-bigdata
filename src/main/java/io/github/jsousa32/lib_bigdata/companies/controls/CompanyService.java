@@ -12,12 +12,13 @@ import io.github.jsousa32.lib_bigdata.companies.entities.registration_data.Basic
 import io.github.jsousa32.lib_bigdata.companies.entities.registration_data.RegistrationData;
 import io.github.jsousa32.lib_bigdata.utils.Page;
 import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.web.util.UriComponentsBuilder;
 
 public interface CompanyService {
 
-    static CompanyService builder(UriComponentsBuilder uri, HttpEntity<String> httpEntity) {
-        return new DefaultCompanyService(uri, httpEntity);
+    static CompanyService builder(UriComponentsBuilder uri, HttpHeaders headers) {
+        return new DefaultCompanyService(uri, headers);
     }
 
     RegistrationData registrationData(String document);
