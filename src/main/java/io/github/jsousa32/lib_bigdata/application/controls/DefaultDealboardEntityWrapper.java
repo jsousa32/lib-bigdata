@@ -7,6 +7,8 @@ import org.springframework.http.HttpMethod;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.util.Objects;
+import java.util.UUID;
 import java.util.function.Function;
 
 final class DefaultDealboardEntityWrapper<T> implements DealboardEntityWrapper<T> {
@@ -15,9 +17,11 @@ final class DefaultDealboardEntityWrapper<T> implements DealboardEntityWrapper<T
 
     private T entity;
 
+    private UUID registrationTypeId;
+
     private final HttpEntity<T> httpEntity;
 
-    private final String uri;
+    private final UriComponentsBuilder uri;
 
     private final RestTemplate restTemplate = new RestTemplate();
 
@@ -26,8 +30,8 @@ final class DefaultDealboardEntityWrapper<T> implements DealboardEntityWrapper<T
         this.httpEntity = new HttpEntity<>(entity, httpEntity.getHeaders());
         this.uri = uri.replacePath(PATH_BASE).replaceQuery(null)
                 .pathSegment(Scope.COMPANIES.getLabel())
-                .pathSegment(IntegrationScope.getSegment(entity.getClass()))
-                .toUriString();
+                .pathSegment(IntegrationScope.getSegment(entity.getClass()));
+
     }
 
     @Override
@@ -42,7 +46,21 @@ final class DefaultDealboardEntityWrapper<T> implements DealboardEntityWrapper<T
     }
 
     @Override
+    public DealboardEntityWrapper<T> setRegistrationTypeId(UUID registrationTypeId) {
+        this.registrationTypeId = registrationTypeId;
+        this.uri.queryParam("registrationTypeId", registrationTypeId);
+        return this;
+    }
+
+    @Override
     public void create() {
-        restTemplate.exchange(this.uri, HttpMethod.POST, this.httpEntity, Void.class, this.entity);
+        this.validate();
+        restTemplate.exchange(this.uri.toUriString(), HttpMethod.POST, this.httpEntity, Void.class, this.entity);
+    }
+
+    private void validate() {
+        if (Objects.isNull(this.registrationTypeId)) {
+            throw new IllegalArgumentException("Missing required parameter: registrationTypeId");
+        }
     }
 }

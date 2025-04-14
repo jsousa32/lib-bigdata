@@ -3,6 +3,7 @@ package io.github.jsousa32.lib_bigdata.application.controls;
 import org.springframework.http.HttpEntity;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.util.UUID;
 import java.util.function.Function;
 
 public interface DealboardEntityWrapper<T> {
@@ -14,6 +15,8 @@ public interface DealboardEntityWrapper<T> {
     DealboardEntityWrapper<T> map(Function<T, T> mapper);
 
     T build();
+
+    DealboardEntityWrapper<T> setRegistrationTypeId(UUID registrationTypeId);
 
     void create();
 }
