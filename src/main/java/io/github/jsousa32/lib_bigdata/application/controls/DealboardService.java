@@ -7,6 +7,8 @@ import io.github.jsousa32.lib_bigdata.custom.entities.CompanyLegal;
 import io.github.jsousa32.lib_bigdata.custom.entities.CompanyNatural;
 import io.github.jsousa32.lib_bigdata.people.controls.PersonService;
 
+import java.util.UUID;
+
 public interface DealboardService {
 
     CompanyService company();
@@ -16,6 +18,8 @@ public interface DealboardService {
     AddressService address();
 
     CustomService custom();
+
+    DealboardService setRegistrationTypeId(UUID registrationTypeId);
 
     void create(CompanyLegal companyLegal);
 

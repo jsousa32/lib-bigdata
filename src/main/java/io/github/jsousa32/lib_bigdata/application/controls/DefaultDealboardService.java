@@ -14,6 +14,9 @@ import org.springframework.http.HttpMethod;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.util.Objects;
+import java.util.UUID;
+
 final class DefaultDealboardService implements DealboardService {
 
     private final static String PATH_BASE = "/api/v1/integration/";
@@ -23,6 +26,8 @@ final class DefaultDealboardService implements DealboardService {
     private final HttpEntity<String> httpEntity;
 
     private final RestTemplate restTemplate = new RestTemplate();
+
+    private UUID registrationTypeId;
 
     public DefaultDealboardService(UriComponentsBuilder uri, HttpHeaders headers) {
         this.uri = uri;
@@ -50,6 +55,12 @@ final class DefaultDealboardService implements DealboardService {
     }
 
     @Override
+    public DealboardService setRegistrationTypeId(UUID registrationTypeId) {
+        this.registrationTypeId = registrationTypeId;
+        return this;
+    }
+
+    @Override
     public void create(CompanyLegal companyLegal) {
         restTemplate.exchange(uri(CompanyLegal.class), HttpMethod.POST, this.httpEntity, Void.class, companyLegal);
     }
@@ -64,7 +75,20 @@ final class DefaultDealboardService implements DealboardService {
     }
 
     private String uri(Class<?> clazz) {
-        return uri.replacePath(PATH_BASE).replaceQuery(null).pathSegment(Scope.COMPANIES.getLabel()).pathSegment(IntegrationScope.getSegment(clazz))
+        this.validate();
+
+        return uri
+                .replacePath(PATH_BASE)
+                .queryParam("registrationTypeId", this.registrationTypeId)
+                .replaceQuery(null)
+                .pathSegment(Scope.COMPANIES.getLabel())
+                .pathSegment(IntegrationScope.getSegment(clazz))
                 .toUriString();
+    }
+
+    private void validate() {
+        if (Objects.isNull(this.registrationTypeId)) {
+            throw new IllegalArgumentException("Missing required parameter: registrationTypeId");
+        }
     }
 }
