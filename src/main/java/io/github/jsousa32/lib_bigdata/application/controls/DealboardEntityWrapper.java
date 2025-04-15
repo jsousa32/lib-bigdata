@@ -12,7 +12,9 @@ public interface DealboardEntityWrapper<T> {
         return new DefaultDealboardEntityWrapper<>(entity, httpEntity, uri);
     }
 
-    DealboardEntityWrapper<T> map(Function<T, T> mapper);
+    DealboardEntityWrapper<T> mutate(Function<T, T> function);
+
+    <R> R map(Function<T, R> function);
 
     T build();
 

@@ -35,9 +35,14 @@ final class DefaultDealboardEntityWrapper<T> implements DealboardEntityWrapper<T
     }
 
     @Override
-    public DealboardEntityWrapper<T> map(Function<T, T> function) {
+    public DealboardEntityWrapper<T> mutate(Function<T, T> function) {
         this.entity = function.apply(entity);
         return this;
+    }
+
+    @Override
+    public <R> R map(Function<T, R> function) {
+        return function.apply(entity);
     }
 
     @Override
