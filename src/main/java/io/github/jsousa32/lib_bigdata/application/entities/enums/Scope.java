@@ -6,7 +6,7 @@ public enum Scope {
 
     COMPANIES("companies"),
 
-    PERSON("person"),
+    PERSON("people"),
 
     ADDRESS("address");
 
