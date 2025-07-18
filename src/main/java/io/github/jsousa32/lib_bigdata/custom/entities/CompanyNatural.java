@@ -5,8 +5,6 @@ import io.github.jsousa32.lib_bigdata.custom.enums.InvestorProfile;
 import io.github.jsousa32.lib_bigdata.custom.enums.MaritalStatus;
 
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
 
 public class CompanyNatural extends Company {
 
