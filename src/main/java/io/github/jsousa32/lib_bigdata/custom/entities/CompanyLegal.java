@@ -9,6 +9,8 @@ import java.util.Set;
 
 public class CompanyLegal extends Company {
 
+    private String document;
+
     private String tradeName;
 
     private TaxRegime taxRegime;
@@ -22,6 +24,15 @@ public class CompanyLegal extends Company {
     private Set<Cnae> cnaes = new HashSet<>();
 
     private Set<LegalRepresentative> legalsRepresentatives = new HashSet<>();
+
+
+    public String getDocument(){
+        return document;
+    }
+
+    public void setDocument(String document){
+        this.document = document;
+    }
 
     public void setTradeName(String tradeName) {
         this.tradeName = tradeName;

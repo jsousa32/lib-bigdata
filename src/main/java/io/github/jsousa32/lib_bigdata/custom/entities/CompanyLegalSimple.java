@@ -15,6 +15,14 @@ public class CompanyLegalSimple extends Company {
 
     private String capital;
 
+    private Double averageRavenue;
+
+    private String registrationMunicipal;
+
+    private String registrationState;
+
+    private String registrationSuframa;
+
     private Set<Cnae> cnaes = new HashSet<>();
 
     public String getTradeName() {
@@ -63,5 +71,37 @@ public class CompanyLegalSimple extends Company {
 
     public void setCnaes(Set<Cnae> cnaes) {
         this.cnaes = cnaes;
+    }
+
+    public Double getAverageRavenue() {
+        return averageRavenue;
+    }
+
+    public void setAverageRavenue(Double averageRavenue) {
+        this.averageRavenue = averageRavenue;
+    }
+
+    public String getRegistrationMunicipal() {
+        return registrationMunicipal;
+    }
+
+    public void setRegistrationMunicipal(String registrationMunicipal) {
+        this.registrationMunicipal = registrationMunicipal;
+    }
+
+    public String getRegistrationState() {
+        return registrationState;
+    }
+
+    public void setRegistrationState(String registrationState) {
+        this.registrationState = registrationState;
+    }
+
+    public String getRegistrationSuframa() {
+        return registrationSuframa;
+    }
+
+    public void setRegistrationSuframa(String registrationSuframa) {
+        this.registrationSuframa = registrationSuframa;
     }
 }
