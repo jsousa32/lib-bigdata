@@ -18,6 +18,8 @@ public class CompanyNatural extends Company {
 
     private String motherName;
 
+    private String rg;
+
     private String issuingAuthority;
 
     private LocalDate dateOfIssue;
@@ -78,6 +80,14 @@ public class CompanyNatural extends Company {
 
     public void setMotherName(String motherName) {
         this.motherName = motherName;
+    }
+
+    public String getRg() {
+        return rg;
+    }
+
+    public void setRg(String rg) {
+        this.rg = rg;
     }
 
     public String getIssuingAuthority() {
