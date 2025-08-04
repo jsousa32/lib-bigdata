@@ -4,6 +4,8 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.util.List;
+
 final class DefaultDealboardBuilder implements DealboardBuilder.Builder {
 
     private static final String TOKEN = "Token";
