@@ -1,16 +1,18 @@
 package io.github.jsousa32.lib_bigdata.custom.entities;
 
+import java.util.List;
+
 public abstract class Company {
 
     private String name;
 
     private String document;
 
-    private String email;
+    private List<Email> email;
 
-    private String telephone;
+    private List<Telephone> telephone;
 
-    private Address address;
+    private List<Address> address;
 
     public String getName() {
         return name;
@@ -28,27 +30,27 @@ public abstract class Company {
         this.document = document;
     }
 
-    public String getEmail() {
+    public List<Email> getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(List<Email> email) {
         this.email = email;
     }
 
-    public String getTelephone() {
+    public List<Telephone> getTelephone() {
         return telephone;
     }
 
-    public void setTelephone(String telephone) {
+    public void setTelephone(List<Telephone> telephone) {
         this.telephone = telephone;
     }
 
-    public Address getAddress() {
-        return address;
+    public void setAddress(List<Address> address) {
+        this.address = address;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public List<Address> getAddress() {
+        return address;
     }
 }

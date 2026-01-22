@@ -18,6 +18,8 @@ public class Address {
 
     private String ibgeCode;
 
+    private Boolean isMain;
+
     public String getZipCode() {
         return zipCode;
     }
@@ -80,5 +82,13 @@ public class Address {
 
     public void setIbgeCode(String ibgeCode) {
         this.ibgeCode = ibgeCode;
+    }
+
+    public Boolean getIsMain() {
+        return isMain;
+    }
+    
+    public void setIsMain(Boolean isMain) {
+        this.isMain = isMain;
     }
 }

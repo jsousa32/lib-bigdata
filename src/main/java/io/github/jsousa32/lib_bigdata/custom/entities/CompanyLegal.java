@@ -1,9 +1,7 @@
 package io.github.jsousa32.lib_bigdata.custom.entities;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import io.github.jsousa32.lib_bigdata.custom.enums.TaxRegime;
 
-import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
