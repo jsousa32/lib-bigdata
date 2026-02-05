@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>io.github.jsousa32</groupId>
 	<artifactId>lib-bigdata</artifactId>
-	<version>1.0.17</version>
+	<version>1.0.18</version>
 	<name>${project.groupId}:${project.artifactId}</name>
 	<description>Biblioteca Dealboard</description>
 	<url>https://github.com/jsousa32/lib-bigdata</url>

@@ -8,9 +8,9 @@ public abstract class Company {
 
     private String document;
 
-    private List<Email> email;
+    private List<Email> emails;
 
-    private List<Telephone> telephone;
+    private List<Telephone> telephones;
 
     private List<Address> address;
 
@@ -30,20 +30,20 @@ public abstract class Company {
         this.document = document;
     }
 
-    public List<Email> getEmail() {
-        return email;
+    public List<Email> getEmails() {
+        return emails;
     }
 
-    public void setEmail(List<Email> email) {
-        this.email = email;
+    public void setEmails(List<Email> emails) {
+        this.emails = emails;
     }
 
-    public List<Telephone> getTelephone() {
-        return telephone;
+    public List<Telephone> getTelephones() {
+        return telephones;
     }
 
-    public void setTelephone(List<Telephone> telephone) {
-        this.telephone = telephone;
+    public void setTelephone(List<Telephone> telephones) {
+        this.telephones = telephones;
     }
 
     public void setAddress(List<Address> address) {
